@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      background-color: rgba(0, 0, 0, 0.4);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: white;
+    }
+
+    .image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    img {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .debug {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
+  </style>
+  <body>
+    <div class="image-wrapper">
+      <img src="file:///E:\image.jpg" alt="" id="currentImage">
+    </div>
+
+    <script>
+      require('./renderer.js')
+    </script>
+
+    <div class="debug">
+      Open File:
+      <script>document.write(window.test)</script>
+    </div>
+  </body>
+</html>
