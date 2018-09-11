@@ -18,6 +18,7 @@ function createWindow () {
     height: 600,
     frame: false,
     transparent: true,
+    resizable: false,
     webPreferences: {
       webSecurity: false
     }
