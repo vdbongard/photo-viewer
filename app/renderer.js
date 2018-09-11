@@ -42,15 +42,15 @@ document.body.addEventListener('click', (event) => {
 function previousImage() {
   if (currentIndex > 0) {
     currentIndex--
+  } else {
+    currentIndex = imageFileNames.length - 1
   }
 
   setImage(currentIndex)
 }
 
 function nextImage() {
-  if (currentIndex < imageFileNames.length - 1) {
-    currentIndex++
-  }
+  currentIndex = (currentIndex + 1) % imageFileNames.length
 
   setImage(currentIndex)
 }
