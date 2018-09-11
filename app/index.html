@@ -21,6 +21,10 @@
       color: white;
     }
 
+    .hidden {
+      display: none!important;
+    }
+
     .image-wrapper {
       display: flex;
       justify-content: center;
@@ -54,9 +58,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      padding: 16px 8px 8px 16px;
+      padding: 16px 16px 16px 16px;
       background-color: rgba(0, 0, 0, 0.2);
-      box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+      border-bottom-right-radius: 14px;
     }
   </style>
   <body>
@@ -66,7 +70,7 @@
 
     <div class="btn-close" data-close>✖</div>
 
-    <div class="debug">
+    <div class="debug hidden">
         Open File: <span data-debug="openFile"></span> <br>
         Open Path: <span data-debug="openPath"></span> <br>
         Open Filename: <span data-debug="openFileName"></span> <br>

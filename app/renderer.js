@@ -3,6 +3,7 @@ const remote = require('electron').remote
 const fs = require('fs');
 
 const image = document.getElementById('currentImage')
+const debugElement = document.querySelector('.debug')
 
 const filePrefix = 'file://'
 let currentDirectory = ''
@@ -52,6 +53,8 @@ document.addEventListener('keydown', (event) => {
     case 'ArrowRight':
       nextImage()
       break;
+    case 'd':
+      toggleDebug()
   }
 });
 
@@ -83,6 +86,10 @@ function setImage (index) {
   image.src = imageSrc
 
   showDebug('imageSrc', imageSrc)
+}
+
+function toggleDebug() {
+  debugElement.classList.toggle('hidden')
 }
 
 function showDebug (target, content) {
