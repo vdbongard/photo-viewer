@@ -41,16 +41,16 @@
   </style>
   <body>
     <div class="image-wrapper">
-      <img src="file:///D:\image.jpg" alt="" id="currentImage">
+      <img src="file:///D:\image1.jpg" alt="" id="currentImage">
+    </div>
+
+    <div class="debug">
+        Open File: <span data-debug="openFile"></span> <br>
+        Image: <span data-debug="imageSrc"></span>
     </div>
 
     <script>
       require('./renderer.js')
     </script>
-
-    <div class="debug">
-      Open File:
-      <script>document.write(window.test)</script>
-    </div>
   </body>
 </html>
