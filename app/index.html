@@ -33,6 +33,22 @@
       max-height: 90vh;
     }
 
+    .btn-close {
+      position: absolute;
+      top: -48px;
+      right: -48px;
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      cursor: pointer;
+      text-align: right;
+      padding-top: 60px;
+      padding-right: 60px;
+      font-size: 16px;
+      line-height: 12px;
+    }
+
     .debug {
       position: absolute;
       top: 16px;
@@ -40,9 +56,11 @@
     }
   </style>
   <body>
-    <div class="image-wrapper">
+    <div class="image-wrapper" data-close>
       <img src="file:///D:\image1.jpg" alt="" id="currentImage">
     </div>
+
+    <div class="btn-close" data-close>✖</div>
 
     <div class="debug">
         Open File: <span data-debug="openFile"></span> <br>

@@ -34,8 +34,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.body.addEventListener('click', (event) => {
-  console.log(event)
-  if (event.target.classList.contains('image-wrapper')) {
+  if (event.target.dataset['close'] !== undefined) {
     remote.getCurrentWindow().close()
   }
 })
