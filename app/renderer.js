@@ -1,26 +1,48 @@
 const ipcRenderer = require('electron').ipcRenderer
 const remote = require('electron').remote
+const fs = require('fs');
 
 const image = document.getElementById('currentImage')
 
-let directory = 'file://D:'
+const filePrefix = 'file://'
+let currentDirectory = ''
+let currentFileName = ''
 let currentIndex = 0
-const imageFileNames = [
-  'image1.jpg',
-  'image2.jpg',
-  'image3.jpg',
-]
 
-const data = ipcRenderer.sendSync('get-file-data')
+let currentFile = ipcRenderer.sendSync('get-file-data')
+showDebug('openFile', currentFile)
 
-showDebug('openFile', data)
+if (!currentFile || currentFile === '.') {
+  currentDirectory = 'C:\\'
+} else {
+  const fileNameIndex = currentFile.lastIndexOf('\\') + 1
 
-if (data && data !== '.') {
-  console.log(data)
-  // const parts = data.split('\\')
-  // directory = parts[0]
-  // image.src = data
+  currentDirectory = currentFile.slice(0, fileNameIndex)
+  currentFileName = currentFile.slice(fileNameIndex);
 }
+
+showDebug('openPath', currentDirectory)
+showDebug('openFileName', currentFileName)
+
+const allowedFileTypes = ['jpg', 'jpeg', 'png']
+
+let images = []
+
+fs.readdirSync(currentDirectory).forEach(file => {
+  if (file.includes('.')) {
+    const fileParts = file.split('.')
+
+    if (allowedFileTypes.includes(fileParts[fileParts.length-1])) {
+      images.push(file)
+    }
+  }
+})
+
+if (images.includes(currentFileName)) {
+  currentIndex = images.indexOf(currentFileName)
+}
+
+setImage(currentIndex)
 
 document.addEventListener('keydown', (event) => {
   switch (event.key) {
@@ -43,20 +65,20 @@ function previousImage() {
   if (currentIndex > 0) {
     currentIndex--
   } else {
-    currentIndex = imageFileNames.length - 1
+    currentIndex = images.length - 1
   }
 
   setImage(currentIndex)
 }
 
 function nextImage() {
-  currentIndex = (currentIndex + 1) % imageFileNames.length
+  currentIndex = (currentIndex + 1) % images.length
 
   setImage(currentIndex)
 }
 
 function setImage (index) {
-  const imageSrc = `${directory}\\${imageFileNames[index]}`
+  const imageSrc = filePrefix + currentDirectory + images[index]
 
   image.src = imageSrc
 

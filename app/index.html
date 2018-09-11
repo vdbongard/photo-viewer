@@ -52,8 +52,11 @@
 
     .debug {
       position: absolute;
-      top: 16px;
-      left: 16px;
+      top: 0;
+      left: 0;
+      padding: 16px 8px 8px 16px;
+      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
     }
   </style>
   <body>
@@ -65,6 +68,8 @@
 
     <div class="debug">
         Open File: <span data-debug="openFile"></span> <br>
+        Open Path: <span data-debug="openPath"></span> <br>
+        Open Filename: <span data-debug="openFileName"></span> <br>
         Image: <span data-debug="imageSrc"></span>
     </div>
 
