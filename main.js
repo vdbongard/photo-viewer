@@ -14,6 +14,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    title: 'Photo Viewer',
     width: 800,
     height: 600,
     frame: false,
