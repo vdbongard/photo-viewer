@@ -1,4 +1,5 @@
 const ipcRenderer = require('electron').ipcRenderer
+const remote = require('electron').remote
 
 const image = document.getElementById('currentImage')
 
@@ -31,6 +32,13 @@ document.addEventListener('keydown', (event) => {
       break;
   }
 });
+
+document.body.addEventListener('click', (event) => {
+  console.log(event)
+  if (event.target.classList.contains('image-wrapper')) {
+    remote.getCurrentWindow().close()
+  }
+})
 
 function previousImage() {
   if (currentIndex > 0) {
